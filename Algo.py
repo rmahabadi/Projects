@@ -21,9 +21,10 @@ for i in range(11,21,10):
     data=r.text
     soup=BeautifulSoup(data,features="lxml")
     for tickers in soup.find_all('td',attrs={'class':'snapshot-td'}):
-        for name in tickers.find_all(attrs={'class':'tab-link'}):
-            tick = name.text
-            s = re.findall("([A-Z]{2,4})", tick)
-            for word in s:
-                if word != "USA":
-                    Ticker.append(word)
+        if tickers.find(attrs={'target':'_blank'}) == None:
+            for name in tickers.find_all(attrs={'class':'tab-link'}):
+                tick = name.text
+                s = re.findall("([A-Z]{2,4})", tick)
+                for word in s:
+                    if word != "USA":
+                        Ticker.append(word)
