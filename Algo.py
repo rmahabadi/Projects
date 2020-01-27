@@ -9,3 +9,7 @@ import requests
 import re
 import datetime
 from statistics import mean,median,mode
+
+Ticker=[]
+Symbol=[]
+Alphavantage_API=[]
