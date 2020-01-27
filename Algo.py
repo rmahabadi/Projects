@@ -22,8 +22,8 @@ def cal_average(num):
     avg = sum_num / len(num)
     return avg
 def increased_volume(x):
-    if cal_average(df['Volume'][79:89])/cal_average(df['Volume'][69:79])>=1.5:
-        print("True increased volume", df['Volume'][79:89])/cal_average(df['Volume'][69:79])
+    if cal_average(df['Volume'][0:10])/cal_average(df['Volume'][10:20])>=1.5:
+        print("True increased volume", df['Volume'][0:10])/cal_average(df['Volume'][10:20])
         Repeat(df['High'])
     else:
         print("False no increased volume")
@@ -37,16 +37,16 @@ def Repeat(x):
             if x[i] == x[j]: 
                 repeated.append(x[i]) 
     return repeated 
-    # might not need this, but not 100% sure
     Double_top(repeated)
-    #Run_Statistics(df)
 def Double_top(x):
-    three_day_high= df['High][0:3].max()
-    time_frame= df[0:30]
-    if three_day_high < time_frame['High']:
-        print(False)
+    three_day_high= df['High'][0:3].max()
+    time_frame= df['High']
+    for i in range(0,30):
+        if three_day_high < time_frame[i]:
+            continue
         else:
-            print(True)
+            print(time_frame[i])
+            break
 
 def Run_Statistics(x):
     Statistics['Mean']=mean(Repeat(df['High']))
@@ -54,11 +54,14 @@ def Run_Statistics(x):
     Statistics['Min']=min(Repeat(df['High']))
     Statistics['High']=max(Repeat(df['High']))
 
+def Consolidation_Area(x):
+    Consolidation_Top = df['High'][97:99].max()
+    Consolidation_Bottom= df['Low']
 
 import pandas as pd
 import pandas_datareader as dr
 from matplotlib import pyplot
-#%matplotlib inline
+%matplotlib inline
 from datetime import datetime   
 import urllib.request
 from bs4 import BeautifulSoup
@@ -96,4 +99,5 @@ for i in range(0,10):
     Alphavantage_API.append(alpha+daily+symbol[i]+output+api)
     print(Ticker[i])
     df = dr.data.get_data_yahoo(Ticker[i],start='2015-01-01', end= '2020-01-01')
+    df= df.iloc[::-1]
     Upward_Trend(df)
