@@ -28,3 +28,15 @@ for i in range(11,21,10):
                 for word in s:
                     if word != "USA":
                         Ticker.append(word)
+
+alpha= "https://www.alphavantage.co/query?"
+daily = "function=TIME_SERIES_DAILY&"
+output = "outputsize=compact&"
+api = "apikey=************"
+
+for i in range(0,10):
+    symbol.append("symbol=" + Ticker[i] + "&")
+    Alphavantage_API.append(alpha+daily+symbol[i]+output+api)
+    print(Ticker[i])
+    df = dr.data.get_data_yahoo(Ticker[i],start='2015-01-01', end= '2020-01-01')
+    Upward_Trend(df)
