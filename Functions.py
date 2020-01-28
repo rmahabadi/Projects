@@ -47,5 +47,15 @@ def Double_top(x):
         print(False)
         else:
             print(True)
-
+def Sideways_Channel(x):
+    Consolidation_Top = df['High'][0:30].max()
+    Consolidation_Bottom= df['Low'][0:30].min()
+    for i in range(30,60):
+        Leeway_High = .15
+        Leeway_Low= -.15
+        Percent_Comparison = ((Consolidation_Top- df['High'][i])/df['High'][i])
+        if (Percent_Comparison >= Leeway_Low) | (Percent_Comparison <= Leeway_High):
+            print(Percent_Comparison)
+        else:
+            break
     
