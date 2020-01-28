@@ -54,9 +54,22 @@ def Run_Statistics(x):
     Statistics['Min']=min(Repeat(df['High']))
     Statistics['High']=max(Repeat(df['High']))
 
-def Consolidation_Area(x):
-    Consolidation_Top = df['High'][97:99].max()
-    Consolidation_Bottom= df['Low']
+def Sideways_Channel(x):
+    Consolidation_Top = df['High'][0:30].max()
+    Consolidation_Bottom= df['Low'][0:30].min()
+    for i in range(30,60):
+        if Consolidation_Top == df['High'][i]:
+            print(True)
+# need to figure out a way to do a plus or minus 5-10% 
+#potential code:
+Leeway_High = .15
+Leeway_Low= -.15
+Percent_Comparison = Consolidation_Top/ df['High'][i]
+if Percent_Comparison >= Leeway_Low || Percent_Comparison <= Leeway_High:
+    continue
+else:
+    break
+# formula for change is current minus prior divided by prior
 
 import pandas as pd
 import pandas_datareader as dr
