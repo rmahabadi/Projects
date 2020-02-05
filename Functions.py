@@ -37,9 +37,6 @@ def Repeat(x):
             if x[i] == x[j]: 
                 repeated.append(x[i]) 
     return repeated 
-    # might not need this, but not 100% sure
-    Double_top(repeated)
-    #Run_Statistics(df)
 def Double_top(x):
     three_day_high= df['High][0:3].max()
     time_frame= df[0:30]
@@ -47,10 +44,12 @@ def Double_top(x):
         print(False)
         else:
             print(True)
+#use counter to account for how many times the high is touched (arbitrary number as the charter has to choose, for simplicity sake use 3)
+#have to change in case it breaks past parameters 
 def Sideways_Channel(x):
-    Consolidation_Top = df['High'][0:30].max()
-    Consolidation_Bottom= df['Low'][0:30].min()
-    for i in range(30,60):
+    Consolidation_Top = df['High'][0:15].max()
+    Consolidation_Bottom= df['Low'][0:15].min()
+    for i in range(15,60):
         Leeway_High = .15
         Leeway_Low= -.15
         Percent_Comparison = ((Consolidation_Top- df['High'][i])/df['High'][i])
