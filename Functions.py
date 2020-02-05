@@ -53,8 +53,11 @@ def Sideways_Channel(x):
         Leeway_High = .15
         Leeway_Low= -.15
         Percent_Comparison = ((Consolidation_Top- df['High'][i])/df['High'][i])
-        if (Percent_Comparison >= Leeway_Low) | (Percent_Comparison <= Leeway_High):
+        if (Percent_Comparison >= Leeway_Low) & (Percent_Comparison <= Leeway_High):
             print(Percent_Comparison)
         else:
             break
+# find a way to pass through the consolidation i points in Sideways_Channel to search between those parameters for Higher-highs
+def bullish_pattern(Higher_highs):
+    Anchor =df['Low'][0:45].min()
     
