@@ -59,5 +59,15 @@ def Sideways_Channel(x):
             break
 # find a way to pass through the consolidation i points in Sideways_Channel to search between those parameters for Higher-highs
 def bullish_pattern(Higher_highs):
-    Anchor =df['Low'][0:45].min()
-    
+    Anchor =df['Low'][10:45].min()
+    Series=[]
+    #series will hold the data of when the delta is negative 
+    for i in range(10,45):
+        Test=((df['Low'][i]-df['Low'][i-1])/df['Low'][i-1])
+        if Anchor < df['Low'][i]:
+            print(True)
+        if Test < 0:
+            Series.append(df['Low'][i])
+        # this function will append the data to Series for further analysis
+        #What still needs to be completed is to run the analysis on the Series data to see if it meets parameteres
+        
