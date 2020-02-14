@@ -68,6 +68,5 @@ def bullish_pattern(Higher_highs):
             print(True)
         if Test < 0:
             Series.append(df['Low'][i])
-        # this function will append the data to Series for further analysis
+        # this function will append the period of transition of deltas previous lows to Series for further analysis
         #What still needs to be completed is to run the analysis on the Series data to see if it meets parameteres
-        
