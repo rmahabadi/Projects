@@ -1,1 +1,1 @@
-# Stock-Trading-Algorithm
+# Sample Projects
